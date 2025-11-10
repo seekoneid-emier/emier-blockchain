@@ -1,0 +1,7 @@
+**/target/
+**/.git/
+**/.github/
+**/docs/book/
+**/.vscode/
+**/*.log
+**/Cargo.lock
