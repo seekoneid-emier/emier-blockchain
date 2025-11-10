@@ -45,12 +45,16 @@ enum AccountCommands {
 
 #[derive(Subcommand)]
 enum TransactionCommands {
-    Send { from: String, to: String, amount: f64 },
+    Send {
+        from: String,
+        to: String,
+        amount: f64,
+    },
 }
 
 fn main() {
     let cli = Cli::parse();
-    
+
     match cli.command {
         Commands::Node { action } => match action {
             NodeCommands::Start { port } => {

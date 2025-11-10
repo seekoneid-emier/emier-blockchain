@@ -24,11 +24,9 @@ impl EmierConfig {
                 name: "emier-mainnet".to_string(),
                 port: 3030,
             },
-            sharding: ShardingConfig {
-                total_shards: 64,
-            },
+            sharding: ShardingConfig { total_shards: 64 },
         };
-        
+
         Ok(config)
     }
 }

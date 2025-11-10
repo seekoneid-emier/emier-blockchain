@@ -3,13 +3,13 @@ use std::time::Instant;
 fn main() {
     println!("📊 Emier Blockchain Benchmark");
     println!("=============================");
-    
+
     let start = Instant::now();
-    
+
     benchmark_consensus();
-    benchmark_sharding(); 
+    benchmark_sharding();
     benchmark_execution();
-    
+
     let duration = start.elapsed();
     println!("✅ All benchmarks completed in {:?}", duration);
 }
