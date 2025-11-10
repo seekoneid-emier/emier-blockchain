@@ -1,0 +1,7 @@
+[book]
+title = "Emier Blockchain"
+description = "Documentation for Emier Blockchain"
+authors = ["SeekOneID"]
+
+[build]
+build-dir = "../book"
