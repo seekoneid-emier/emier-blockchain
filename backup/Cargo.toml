@@ -1,0 +1,22 @@
+[package]
+name = "emier-blockchain"
+version = "1.0.0"
+edition = "2021"
+
+[dependencies]
+
+[[bin]]
+name = "emier-node"
+path = "src/bin/node/main.rs"
+
+[[bin]]
+name = "emier-cli"
+path = "src/bin/cli/main.rs"
+
+[[bin]]
+name = "emier-dev"
+path = "src/bin/dev/main.rs"
+
+[[bin]]
+name = "emier-benchmark"
+path = "src/bin/benchmark/main.rs"
