@@ -1,0 +1,114 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  CARGO_NET_GIT_FETCH_WITH_CLI: true
+  RUST_BACKTRACE: 1
+
+jobs:
+  test:
+    name: Test Suite
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        rust: [stable, nightly]
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install Rust
+      uses: dtolnay/rust-toolchain@master
+      with:
+        toolchain: ${{ matrix.rust }}
+        components: clippy, rustfmt
+
+    - name: Cache cargo registry
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.cargo/registry
+          ~/.cargo/git
+          target
+        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-cargo-
+
+    - name: Build project
+      run: |
+        cargo build --verbose
+        cargo build --release --verbose
+
+    - name: Run tests
+      run: |
+        cargo test --verbose
+        cargo test --release --verbose
+
+    - name: Run benchmarks
+      run: |
+        cargo run --bin emier-benchmark --release
+
+    - name: Check code format
+      run: cargo fmt -- --check
+
+    - name: Clippy check
+      run: cargo clippy -- -D warnings
+
+  security:
+    name: Security Audit
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Install Rust
+      uses: dtolnay/rust-toolchain@stable
+
+    - name: Run cargo audit
+      uses: actions-rs/audit-check@v1
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Check for known vulnerabilities
+      run: |
+        cargo install cargo-audit
+        cargo audit
+
+  coverage:
+    name: Code Coverage
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Install Rust
+      uses: dtolnay/rust-toolchain@stable
+
+    - name: Generate code coverage
+      uses: actions-rs/tarpaulin@v0.1
+      with:
+        args: '--ignore-tests --out Lcov'
+        
+    - name: Upload to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        file: lcov.info
+
+  wasm:
+    name: WASM Build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Install Rust with WASM target
+      uses: dtolnay/rust-toolchain@stable
+      with:
+        targets: wasm32-unknown-unknown
+
+    - name: Build WASM contracts
+      run: |
+        cargo build --target wasm32-unknown-unknown --release
+        find target/wasm32-unknown-unknown/release -name "*.wasm" -exec ls -la {} \;
