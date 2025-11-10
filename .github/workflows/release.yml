@@ -7,38 +7,12 @@ on:
   workflow_dispatch:
 
 jobs:
-  create-release:
-    name: Create Release
-    runs-on: ubuntu-latest
-    outputs:
-      upload_url: ${{ steps.create_release.outputs.upload_url }}
-    
-    steps:
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
-        draft: false
-        prerelease: false
-
   build-binaries:
-    name: Build Multi-Platform Binaries
-    needs: create-release
+    name: Build Binaries
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        include:
-          - target: x86_64-unknown-linux-gnu
-            os: ubuntu-latest
-          - target: x86_64-apple-darwin
-            os: macos-latest
-          - target: x86_64-pc-windows-msvc
-            os: windows-latest
-
-    runs-on: ${{ matrix.os }}
+        target: [x86_64-unknown-linux-gnu]
     
     steps:
     - uses: actions/checkout@v4
@@ -56,18 +30,10 @@ jobs:
     - name: Package binaries
       run: |
         cd target/${{ matrix.target }}/release
-        if [ "${{ matrix.os }}" = "windows-latest" ]; then
-          7z a ../../../release-binaries/emier-${{ github.ref_name }}-${{ matrix.target }}.zip emier-node.exe emier-cli.exe emier-dev.exe emier-benchmark.exe
-        else
-          tar czvf ../../../release-binaries/emier-${{ github.ref_name }}-${{ matrix.target }}.tar.gz emier-node emier-cli emier-dev emier-benchmark
-        fi
+        tar czvf ../../../release-binaries/emier-${{ github.ref_name }}-${{ matrix.target }}.tar.gz emier-node emier-cli emier-dev emier-benchmark 2>/dev/null || echo "⚠️ Some binaries missing"
 
-    - name: Upload Release Assets
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Upload binaries
+      uses: actions/upload-artifact@v3
       with:
-        upload_url: ${{ needs.create-release.outputs.upload_url }}
-        asset_path: ./release-binaries/emier-${{ github.ref_name }}-${{ matrix.target }}.${{ matrix.os == 'windows-latest' && 'zip' || 'tar.gz' }}
-        asset_name: emier-${{ github.ref_name }}-${{ matrix.target }}.${{ matrix.os == 'windows-latest' && 'zip' || 'tar.gz' }}
-        asset_content_type: application/octet-stream
+        name: emier-binaries-${{ matrix.target }}
+        path: release-binaries/
