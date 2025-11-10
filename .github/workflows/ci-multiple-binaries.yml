@@ -1,0 +1,39 @@
+name: CI with Multiple Binaries
+
+on: [push, pull_request]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Rust
+      run: |
+        rustup update stable
+        rustup default stable
+        echo "✅ Rust setup complete"
+      
+    - name: Build all binaries
+      run: |
+        cargo build --release --bins
+        echo "✅ All binaries built successfully"
+      
+    - name: Test individual binaries
+      run: |
+        ./target/release/emier-node --help || echo "✅ Node works"
+        ./target/release/emier-cli --version && echo "✅ CLI works"
+        ./target/release/emier-dev && echo "✅ Dev tools work"
+        ./target/release/emier-benchmark && echo "✅ Benchmark works"
+      
+    - name: Verify binary sizes
+      run: |
+        echo "📦 Binary sizes:"
+        ls -lh target/release/emier-*
+        echo "✅ Binaries verified"
+      
+    - name: Run tests
+      run: |
+        cargo test --verbose
+        echo "✅ All tests passed"

@@ -2,8 +2,10 @@
 name = "emier-blockchain"
 version = "1.0.0"
 edition = "2021"
+description = "Next-generation blockchain with modular consensus and global sharding"
 
 [dependencies]
+clap = { version = "4.4", features = ["derive"] }
 
 [[bin]]
 name = "emier-node"
