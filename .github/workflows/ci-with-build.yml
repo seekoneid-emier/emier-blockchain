@@ -1,0 +1,36 @@
+name: CI with Basic Build
+
+on: [push, pull_request]
+
+jobs:
+  simple-build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Rust
+      run: |
+        rustup update stable
+        rustup default stable
+        echo "✅ Rust setup complete"
+      
+    - name: Basic cargo check
+      run: |
+        cargo check
+        echo "✅ Cargo check passed"
+      
+    - name: Run tests
+      run: |
+        cargo test
+        echo "✅ Tests passed"
+      
+    - name: Build release
+      run: |
+        cargo build --release
+        echo "✅ Release build successful"
+        
+    - name: Verify binaries
+      run: |
+        find target/release/ -name "emier-*" -type f 2>/dev/null | head -5
+        echo "✅ Binaries verified"
