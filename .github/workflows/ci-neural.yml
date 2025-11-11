@@ -1,0 +1,66 @@
+name: Neural Consensus CI
+
+on:
+  push:
+    branches: [ feat/neural-consensus-* ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-neural:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Build with neural features
+      run: |
+        cargo build --release --features "neural_consensus"
+        ./target/release/emier-dev --version
+        
+    - name: Run neural consensus tests
+      run: |
+        ./target/release/emier-dev \
+          --consensus neural \
+          --shards 16 \
+          --simulate-attack ddos \
+          --metrics-output ci-results.json
+          
+    - name: Validate performance targets
+      run: |
+        LATENCY_REDUCTION=$(jq -r '.baseline_latency / .neural_latency' ci-results.json)
+        ANOMALY_RATE=$(jq -r '.anomalies_detected / .anomalies_total' ci-results.json)
+        
+        if (( $(echo "$LATENCY_REDUCTION < 1.25" | bc -l) )); then
+          echo "❌ Latency reduction target not met: $LATENCY_REDUCTION"
+          exit 1
+        fi
+        
+        if (( $(echo "$ANOMALY_RATE < 0.90" | bc -l) )); then
+          echo "❌ Anomaly detection target not met: $ANOMALY_RATE"
+          exit 1
+        fi
+        
+        echo "✅ All neural consensus targets met"
+
+  benchmark-neural:
+    runs-on: ubuntu-latest
+    needs: test-neural
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Run comprehensive benchmarks
+      run: |
+        cargo build --release --features "neural_consensus"
+        ./target/release/emier-benchmark \
+          --consensus neural \
+          --duration 600 \
+          --shards 64 \
+          --output benchmark-neural.json
+          
+    - name: Upload benchmark results
+      uses: actions/upload-artifact@v3
+      with:
+        name: neural-benchmark-results
+        path: benchmark-neural.json
