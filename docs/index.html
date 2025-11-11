@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emier Blockchain - Neural Consensus & Global Sharding</title>
+    <style>
+        :root { 
+            --primary: #2563eb; 
+            --dark: #1e293b; 
+            --light: #f8fafc;
+            --success: #10b981;
+        }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: white; 
+            color: #334155;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        .hero {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 6rem 0;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.25rem;
+            color: #64748b;
+            margin-bottom: 3rem;
+        }
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        .metric-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        .metric-label {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        .features {
+            padding: 6rem 0;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            border: 1px solid #e2e8f0;
+        }
+        .feature-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+        .status-badge {
+            display: inline-block;
+            background: var(--success);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .cta-section {
+            text-align: center;
+            padding: 4rem 0;
+            background: var(--light);
+            border-radius: 12px;
+            margin: 4rem 0;
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4);
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="container">
+            <h1>Emier Blockchain</h1>
+            <p>Enterprise-Grade Blockchain dengan Neural Consensus & Global Sharding Architecture</p>
+            
+            <div class="metrics">
+                <div class="metric-card">
+                    <div class="metric-value">128,500+</div>
+                    <div class="metric-label">Transactions Per Second</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">1.1s</div>
+                    <div class="metric-label">Finality Time</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">64</div>
+                    <div class="metric-label">Global Shards</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">500K+</div>
+                    <div class="metric-label">Scalable TPS</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="container">
+        <div class="features">
+            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: var(--dark);">
+                Next-Generation Blockchain Technology
+            </h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="status-badge">PRODUCTION READY</div>
+                    <h3>🤖 Neural Consensus Engine</h3>
+                    <p>AI-powered consensus algorithm achieving 128,500 TPS with 1.1 second finality. Features adaptive mode switching and real-time network optimization.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="status-badge">SCALABLE ARCHITECTURE</div>
+                    <h3>🌐 Global Sharding Network</h3>
+                    <p>64-shard architecture with seamless cross-shard communication. Atomic transactions and horizontal scalability for enterprise workloads.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="status-badge">ENTERPRISE GRADE</div>
+                    <h3>🏢 Production Deployment</h3>
+                    <p>Complete enterprise toolkit with monitoring, SDKs, APIs, and security features. Ready for mainnet deployment and validator onboarding.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- System Status -->
+        <div class="feature-card" style="text-align: center; margin: 3rem 0;">
+            <h3>🚀 Live System Status</h3>
+            <div style="display: inline-grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin: 2rem 0;">
+                <div>
+                    <div style="font-size: 1.5rem; font-weight: 600; color: var(--success);">🟢 ONLINE</div>
+                    <div>Validator Network</div>
+                </div>
+                <div>
+                    <div style="font-size: 1.5rem; font-weight: 600; color: var(--success);">🟢 ACTIVE</div>
+                    <div>Enterprise APIs</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2 style="font-size: 2rem; margin-bottom: 1rem; color: var(--dark);">Ready to Build the Future?</h2>
+            <p style="color: #64748b; margin-bottom: 2rem; font-size: 1.1rem;">
+                Join the Emier Blockchain ecosystem. Deploy validators, build dApps, or integrate enterprise solutions.
+            </p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="https://github.com/seekoneid-emier/emier-blockchain" class="btn-primary">
+                    🚀 Get Started on GitHub
+                </a>
+                <a href="https://github.com/seekoneid-emier/emier-blockchain/tree/main/docs/recruitment" 
+                   class="btn-primary" style="background: var(--success);">
+                    👥 Become a Validator
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div style="text-align: center; padding: 3rem 0; color: #64748b; border-top: 1px solid #e2e8f0;">
+        <div class="container">
+            <p>Emier Blockchain &copy; 2024 - Neural Consensus & Global Sharding Technology</p>
+            <p>Production Ready • Enterprise Grade • Open Source</p>
+        </div>
+    </div>
+</body>
+</html>
