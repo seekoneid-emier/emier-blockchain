@@ -3,257 +3,483 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emier Blockchain - Neural Consensus Breakthrough</title>
-    <meta name="description" content="Enterprise blockchain with Neural Consensus: 128,500 TPS, 1.1s finality, 92% detection. Production ready.">
+    <title>Emier Blockchain - Neural Consensus: 128,500 TPS Breakthrough</title>
+    <meta name="description" content="Enterprise blockchain with Neural Consensus AI: 128,500 TPS, 1.1s finality, 92% detection, 5% validator bonus. Live on mainnet.">
+    <!-- CACHE BUSTER -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --black: #000; --dark: #1a1a1a; --darker: #2d2d2d;
-            --white: #fff; --gray: #6c757d; --purple: #8b5cf6;
-            --green: #28a745;
+            --black: #000000; --dark: #1a1a1a; --darker: #2d2d2d;
+            --white: #ffffff; --gray: #6c757d; --purple: #8b5cf6;
+            --green: #10b981; --red: #ef4444;
         }
         body { 
-            font-family: 'Inter', sans-serif; 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
             background: var(--black); 
             color: var(--white); 
-            line-height: 1.6; 
+            line-height: 1.6;
+            min-height: 100vh;
         }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 2rem; 
+        }
         
         /* Header */
         .header { 
-            background: var(--dark); 
-            padding: 3rem 0; 
-            text-align: center; 
+            background: linear-gradient(135deg, var(--dark), #000000);
+            padding: 4rem 0;
+            text-align: center;
             border-bottom: 1px solid var(--darker);
         }
         .logo { 
-            font-size: 3rem; 
-            font-weight: 700; 
+            font-size: 3.5rem; 
+            font-weight: 800; 
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--white), var(--purple));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background: linear-gradient(135deg, var(--white), var(--purple), #ec4899);
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .tagline {
+            font-size: 1.4rem;
+            color: var(--gray);
+            margin-bottom: 3rem;
         }
         
-        /* Neural Badge */
-        .neural-badge {
-            background: linear-gradient(135deg, var(--darker), #1a0b2e);
+        /* Neural Hero Section */
+        .neural-hero {
+            background: linear-gradient(135deg, var(--darker), #1a0b2e, #000000);
             border: 2px solid var(--purple);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 2rem 0;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.3);
+        }
+        .neural-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--white);
+        }
+        
+        /* Metrics Grid */
+        .metrics-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 1.5rem; 
+            margin: 3rem 0; 
+        }
+        .metric-card { 
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 2rem 1.5rem;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            transition: all 0.3s ease;
+        }
+        .metric-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--purple);
+            box-shadow: 0 15px 40px rgba(139, 92, 246, 0.4);
+        }
+        .metric-value { 
+            font-size: 2.5rem; 
+            font-weight: 800; 
+            color: var(--purple); 
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+        }
+        .metric-label {
+            color: var(--gray);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        /* Features Grid */
+        .features-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 2rem; 
+            margin: 4rem 0; 
+        }
+        .feature-card { 
+            background: var(--dark);
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--darker);
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--purple);
+            box-shadow: 0 15px 40px rgba(139, 92, 246, 0.2);
+        }
+        .feature-card.neural {
+            background: linear-gradient(135deg, var(--dark), #1a0b2e);
+            border: 2px solid var(--purple);
+        }
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+        .feature-list {
+            list-style: none;
+        }
+        .feature-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+        }
+        .feature-list li:before {
+            content: "✓";
+            color: var(--purple);
+            font-weight: bold;
+            margin-right: 0.75rem;
+            font-size: 1.1rem;
+        }
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+        
+        /* Code Block */
+        .code-block {
+            background: var(--darker);
+            border: 1px solid var(--gray);
             border-radius: 12px;
             padding: 2rem;
             margin: 2rem 0;
-            text-align: center;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            overflow-x: auto;
         }
-        .metrics { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
-            gap: 1rem; 
-            margin: 2rem 0; 
-        }
-        .metric { 
-            background: var(--dark); 
-            padding: 1.5rem; 
-            border-radius: 8px; 
-            text-align: center;
-            border: 1px solid var(--darker);
-        }
-        .metric-value { 
-            font-size: 2rem; 
-            font-weight: 700; 
-            color: var(--purple); 
-            margin-bottom: 0.5rem; 
+        .code-line {
+            margin-bottom: 0.5rem;
         }
         
-        /* Features */
-        .features { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 2rem; 
-            margin: 3rem 0; 
+        /* Buttons */
+        .buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 3rem 0;
         }
-        .feature { 
-            background: var(--dark); 
-            padding: 2rem; 
-            border-radius: 12px; 
-            border: 1px solid var(--darker);
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.25rem 2rem;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            text-align: center;
         }
-        .feature.neural { 
+        .btn-primary {
+            background: var(--purple);
+            color: var(--white);
+        }
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--purple);
             border-color: var(--purple);
-            background: linear-gradient(135deg, var(--dark), #1a0b2e);
+            transform: translateY(-2px);
         }
-        
-        /* Code */
-        .code { 
-            background: var(--dark); 
-            padding: 1.5rem; 
-            border-radius: 8px; 
-            margin: 1.5rem 0;
-            font-family: monospace;
-            border: 1px solid var(--darker);
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--black);
+            transform: translateY(-2px);
         }
         
         /* Footer */
-        .footer { 
-            background: var(--dark); 
-            padding: 3rem 0; 
-            text-align: center; 
-            margin-top: 4rem;
+        .footer {
+            background: var(--dark);
+            padding: 4rem 0;
+            margin-top: 6rem;
             border-top: 1px solid var(--darker);
         }
+        .footer-content {
+            text-align: center;
+        }
+        .footer-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        .footer-badge {
+            background: var(--darker);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid var(--gray);
+        }
         
+        /* Responsive */
         @media (max-width: 768px) {
             .container { padding: 0 1rem; }
-            .logo { font-size: 2rem; }
-            .metrics { grid-template-columns: 1fr; }
-            .features { grid-template-columns: 1fr; }
+            .logo { font-size: 2.5rem; }
+            .neural-title { font-size: 2rem; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .features-grid { grid-template-columns: 1fr; }
+            .buttons-grid { grid-template-columns: 1fr; }
+        }
+        
+        /* Animations */
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.4); }
+            50% { box-shadow: 0 0 40px rgba(139, 92, 246, 0.8); }
+        }
+        .glow {
+            animation: glow 2s ease-in-out infinite;
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Header -->
     <header class="header">
         <div class="container">
             <div class="logo">EMIER BLOCKCHAIN</div>
-            <p style="color: var(--gray); font-size: 1.2rem; margin-bottom: 2rem;">
-                Enterprise Blockchain with Neural Consensus Breakthrough
-            </p>
+            <p class="tagline">Enterprise-Grade Blockchain with Neural Consensus AI</p>
             
-            <div class="neural-badge">
-                <h2 style="margin-bottom: 1rem;">🧠 Neural Consensus LIVE on Mainnet</h2>
-                <div class="metrics">
-                    <div class="metric">
+            <div class="neural-hero glow">
+                <h1 class="neural-title">🧠 Neural Consensus Breakthrough</h1>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem; color: var(--gray);">
+                    AI-Powered Consensus Engine • Live on Mainnet • Production Ready
+                </p>
+                
+                <div class="metrics-grid">
+                    <div class="metric-card">
                         <div class="metric-value">128,500</div>
-                        <div>Transactions per Second</div>
+                        <div class="metric-label">TRANSACTIONS PER SECOND</div>
                     </div>
-                    <div class="metric">
+                    <div class="metric-card">
                         <div class="metric-value">1.1s</div>
-                        <div>Finality Time</div>
+                        <div class="metric-label">FINALITY TIME</div>
                     </div>
-                    <div class="metric">
+                    <div class="metric-card">
                         <div class="metric-value">92%</div>
-                        <div>Anomaly Detection</div>
+                        <div class="metric-label">ANOMALY DETECTION</div>
                     </div>
-                    <div class="metric">
+                    <div class="metric-card">
                         <div class="metric-value">5%</div>
-                        <div>Validator Bonus</div>
+                        <div class="metric-label">VALIDATOR BONUS</div>
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
+    <!-- Main Content -->
     <main class="container" style="padding: 4rem 0;">
-        <!-- Neural Consensus Section -->
-        <section style="margin-bottom: 4rem;">
-            <h2 style="font-size: 2rem; margin-bottom: 2rem; border-bottom: 2px solid var(--darker); padding-bottom: 0.5rem;">
-                🚀 Neural Consensus Breakthrough
+        <!-- Neural Consensus Features -->
+        <section>
+            <h2 style="font-size: 2.5rem; margin-bottom: 3rem; text-align: center; border-bottom: 2px solid var(--darker); padding-bottom: 1rem;">
+                🚀 Why Neural Consensus?
             </h2>
             
-            <div class="feature neural">
-                <h3 style="margin-bottom: 1rem;">🧠 AI-Powered Consensus Engine</h3>
-                <ul style="list-style: none;">
-                    <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--darker);">✅ <strong>128,500 TPS</strong> - Enterprise throughput</li>
-                    <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--darker);">✅ <strong>1.1s Finality</strong> - Near-instant confirmation</li>
-                    <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--darker);">✅ <strong>92% Detection</strong> - Enhanced security</li>
-                    <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--darker);">✅ <strong>5% Bonus</strong> - Validator incentives</li>
-                    <li style="padding: 0.5rem 0;">✅ <strong>Mainnet Live</strong> - Production deployment</li>
-                </ul>
+            <div class="features-grid">
+                <div class="feature-card neural">
+                    <div class="feature-icon">🧠</div>
+                    <h3 class="feature-title">AI-Powered Optimization</h3>
+                    <ul class="feature-list">
+                        <li>Adaptive consensus mode switching</li>
+                        <li>Real-time network optimization</li>
+                        <li>Machine learning-driven parameters</li>
+                        <li>Predictive performance scaling</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">Breakthrough Performance</h3>
+                    <ul class="feature-list">
+                        <li><strong>128,500 TPS</strong> - Enterprise throughput</li>
+                        <li><strong>1.1s Finality</strong> - Near-instant confirmation</li>
+                        <li><strong>92% Detection</strong> - Security enhanced</li>
+                        <li><strong>5% Bonus</strong> - Validator rewards</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3 class="feature-title">Enhanced Security</h3>
+                    <ul class="feature-list">
+                        <li>Real-time anomaly detection</li>
+                        <li>DDoS attack prevention</li>
+                        <li>Fork attempt identification</li>
+                        <li>Automated threat response</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
         <!-- Quick Start -->
-        <section style="margin-bottom: 4rem;">
-            <h2 style="font-size: 2rem; margin-bottom: 2rem; border-bottom: 2px solid var(--darker); padding-bottom: 0.5rem;">
-                ⚡ Quick Start
+        <section style="margin: 6rem 0;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 2rem; text-align: center;">
+                ⚡ Get Started in 60 Seconds
             </h2>
             
-            <div class="feature">
-                <h3 style="margin-bottom: 1rem;">Get Started with Neural Consensus</h3>
-                <div class="code">
-# Build with neural features<br>
-cargo build --release --features "neural_consensus"<br><br>
-
-# Run neural node (5% bonus active)<br>
-./target/release/emier-node<br><br>
-
-# Test neural consensus<br>
-./target/release/emier-dev --test-neural
+            <div class="feature-card" style="max-width: 800px; margin: 0 auto;">
+                <h3 style="margin-bottom: 1.5rem; font-size: 1.5rem;">Start Earning 5% Bonus Today</h3>
+                <div class="code-block">
+                    <div class="code-line"># Clone the repository</div>
+                    <div class="code-line">git clone https://github.com/seekoneid-emier/emier-blockchain</div>
+                    <div class="code-line">cd emier-blockchain</div>
+                    <br>
+                    <div class="code-line"># Build with Neural Consensus features</div>
+                    <div class="code-line">cargo build --release --features "neural_consensus"</div>
+                    <br>
+                    <div class="code-line"># Run node with 5% bonus active</div>
+                    <div class="code-line">./target/release/emier-node</div>
+                    <br>
+                    <div class="code-line"># Test Neural Consensus functions</div>
+                    <div class="code-line">./target/release/emier-dev --test-neural</div>
                 </div>
             </div>
         </section>
 
-        <!-- Features -->
-        <section style="margin-bottom: 4rem;">
-            <h2 style="font-size: 2rem; margin-bottom: 2rem; border-bottom: 2px solid var(--darker); padding-bottom: 0.5rem;">
-                🛠️ Core Features
+        <!-- Architecture -->
+        <section style="margin: 6rem 0;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 3rem; text-align: center;">
+                🏗️ System Architecture
             </h2>
             
-            <div class="features">
-                <div class="feature neural">
-                    <h3>🧠 Neural Consensus</h3>
-                    <ul style="list-style: none; margin-top: 1rem;">
-                        <li style="padding: 0.5rem 0;">Adaptive Mode Switching</li>
-                        <li style="padding: 0.5rem 0;">Real-time Optimization</li>
-                        <li style="padding: 0.5rem 0;">Anomaly Detection</li>
-                        <li style="padding: 0.5rem 0;">5% Validator Bonus</li>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3 class="feature-title">🧠 Neural Engine</h3>
+                    <ul class="feature-list">
+                        <li>Real-time metrics analysis</li>
+                        <li>Consensus mode recommendation</li>
+                        <li>Parameter optimization</li>
+                        <li>Anomaly detection</li>
                     </ul>
                 </div>
                 
-                <div class="feature">
-                    <h3>🌐 Global Sharding</h3>
-                    <ul style="list-style: none; margin-top: 1rem;">
-                        <li style="padding: 0.5rem 0;">64 Independent Shards</li>
-                        <li style="padding: 0.5rem 0;">Cross-Shard Communication</li>
-                        <li style="padding: 0.5rem 0;">Horizontal Scalability</li>
-                        <li style="padding: 0.5rem 0;">Load Balancing</li>
+                <div class="feature-card">
+                    <h3 class="feature-title">🌐 Global Sharding</h3>
+                    <ul class="feature-list">
+                        <li>64 independent shards</li>
+                        <li>Cross-shard transactions</li>
+                        <li>Horizontal scalability</li>
+                        <li>Load distribution</li>
                     </ul>
                 </div>
                 
-                <div class="feature">
-                    <h3>⚡ Modular Consensus</h3>
-                    <ul style="list-style: none; margin-top: 1rem;">
-                        <li style="padding: 0.5rem 0;">Proof of Stake</li>
-                        <li style="padding: 0.5rem 0;">Proof of History</li>
-                        <li style="padding: 0.5rem 0;">PBFT</li>
-                        <li style="padding: 0.5rem 0;">Hybrid AI</li>
+                <div class="feature-card">
+                    <h3 class="feature-title">⚡ Multi-Consensus</h3>
+                    <ul class="feature-list">
+                        <li>Proof of Stake (PoS)</li>
+                        <li>Proof of History (PoH)</li>
+                        <li>PBFT for low participation</li>
+                        <li>Hybrid AI optimization</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <!-- Links -->
-        <section>
-            <h2 style="font-size: 2rem; margin-bottom: 2rem; border-bottom: 2px solid var(--darker); padding-bottom: 0.5rem;">
-                📚 Resources
+        <!-- CTA Section -->
+        <section style="text-align: center; margin: 6rem 0;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">
+                Ready to Experience 128,500 TPS?
             </h2>
+            <p style="font-size: 1.2rem; margin-bottom: 3rem; color: var(--gray);">
+                Join the Neural Consensus revolution and start earning 5% bonus rewards today.
+            </p>
             
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
-                <a href="https://github.com/seekoneid-emier/emier-blockchain" 
-                   style="display: block; background: var(--white); color: var(--black); padding: 1rem; text-align: center; text-decoration: none; border-radius: 8px; font-weight: 600;">
-                    📁 GitHub
+            <div class="buttons-grid" style="max-width: 500px; margin: 0 auto;">
+                <a href="https://github.com/seekoneid-emier/emier-blockchain" class="btn btn-primary" target="_blank">
+                    🚀 Get Started
                 </a>
-                <a href="https://github.com/seekoneid-emier/emier-blockchain/actions" 
-                   style="display: block; background: transparent; color: var(--white); padding: 1rem; text-align: center; text-decoration: none; border-radius: 8px; font-weight: 600; border: 2px solid var(--white);">
-                    ✅ CI/CD Status
-                </a>
-                <a href="https://github.com/seekoneid-emier/emier-blockchain/tree/main/docs" 
-                   style="display: block; background: var(--purple); color: var(--white); padding: 1rem; text-align: center; text-decoration: none; border-radius: 8px; font-weight: 600;">
-                    🧠 Documentation
+                <a href="https://github.com/seekoneid-emier/emier-blockchain/tree/main/docs" class="btn btn-secondary" target="_blank">
+                    📚 Documentation
                 </a>
             </div>
         </section>
     </main>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p><strong>Emier Blockchain</strong> - Neural Consensus Breakthrough</p>
-            <p style="margin-top: 1rem; color: var(--gray);">
-                🧠 128,500 TPS • ⚡ 1.1s Finality • 🛡️ 92% Detection • 💰 5% Bonus
-            </p>
-            <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--gray);">
-                &copy; 2024 Emier Blockchain. Neural Consensus Live on Mainnet.
-            </p>
+            <div class="footer-content">
+                <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Emier Blockchain</h3>
+                <p style="color: var(--gray); margin-bottom: 2rem;">
+                    Next-generation blockchain with Neural Consensus AI
+                </p>
+                
+                <div class="footer-badges">
+                    <div class="footer-badge">🧠 Neural Consensus</div>
+                    <div class="footer-badge">🚀 128,500 TPS</div>
+                    <div class="footer-badge">⚡ 1.1s Finality</div>
+                    <div class="footer-badge">🛡️ 92% Detection</div>
+                    <div class="footer-badge">💰 5% Bonus</div>
+                </div>
+                
+                <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--gray);">
+                    &copy; 2024 Emier Blockchain. Neural Consensus Live on Mainnet.
+                </p>
+            </div>
         </div>
     </footer>
+
+    <script>
+        // Add interactive animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effects to metric cards
+            const metricCards = document.querySelectorAll('.metric-card');
+            metricCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.05)';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+            
+            // Add scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe all feature cards and sections
+            document.querySelectorAll('.feature-card, section').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        });
+    </script>
 </body>
 </html>
