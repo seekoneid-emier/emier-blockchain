@@ -3,127 +3,344 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emier Blockchain - Neural Consensus & Global Sharding</title>
+    <title>Emier Blockchain - Neural Consensus & Global Sharding Technology</title>
     <style>
         :root { 
-            --primary: #2563eb; 
-            --dark: #1e293b; 
-            --light: #f8fafc;
-            --success: #10b981;
+            --primary: #ffffff;
+            --secondary: #000000;
+            --accent: #2563eb;
+            --text-light: #f8fafc;
+            --text-dark: #1e293b;
+            --gray-light: #64748b;
+            --gray-dark: #334155;
         }
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background: white; 
-            color: #334155;
+        
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
+        
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            background: var(--secondary);
+            color: var(--primary);
+            line-height: 1.6;
+        }
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
         }
+        
+        /* Header */
+        .header {
+            background: var(--secondary);
+            border-bottom: 1px solid #334155;
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--secondary) 0%, #111827 100%);
+            padding: 12rem 0 6rem;
             text-align: center;
         }
+        
         .hero h1 {
             font-size: 3.5rem;
             font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
+        
         .hero p {
             font-size: 1.25rem;
-            color: #64748b;
-            margin-bottom: 3rem;
+            color: var(--gray-light);
+            max-width: 600px;
+            margin: 0 auto 3rem;
         }
+        
+        /* Metrics Grid */
         .metrics {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
-            margin: 3rem 0;
+            margin: 4rem 0;
         }
+        
         .metric-card {
-            background: white;
-            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2.5rem 2rem;
             border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            border: 1px solid #334155;
             text-align: center;
-            border: 1px solid #e2e8f0;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
+        
+        .metric-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+        
         .metric-value {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 700;
             color: var(--primary);
             margin-bottom: 0.5rem;
         }
+        
         .metric-label {
-            color: #64748b;
-            font-size: 0.9rem;
+            color: var(--gray-light);
+            font-size: 1rem;
+            font-weight: 500;
         }
+        
+        /* Features Section */
         .features {
             padding: 6rem 0;
+            background: rgba(255, 255, 255, 0.02);
         }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 4rem;
+            color: var(--primary);
+        }
+        
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
         }
+        
         .feature-card {
-            background: white;
-            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem 2rem;
             border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
-            border: 1px solid #e2e8f0;
-        }
-        .feature-card h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.25rem;
-        }
-        .status-badge {
-            display: inline-block;
-            background: var(--success);
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        .cta-section {
-            text-align: center;
-            padding: 4rem 0;
-            background: var(--light);
-            border-radius: 12px;
-            margin: 4rem 0;
-        }
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-            padding: 1rem 2rem;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            display: inline-block;
+            border: 1px solid #334155;
             transition: all 0.3s ease;
         }
+        
+        .feature-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .feature-card p {
+            color: var(--gray-light);
+            line-height: 1.7;
+        }
+        
+        /* Status Section */
+        .status {
+            padding: 6rem 0;
+            text-align: center;
+        }
+        
+        .status-grid {
+            display: inline-grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+        
+        .status-item {
+            text-align: center;
+        }
+        
+        .status-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #10b981;
+            margin-bottom: 0.5rem;
+        }
+        
+        .status-label {
+            color: var(--gray-light);
+            font-weight: 500;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--secondary) 0%, #1e293b 100%);
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .cta p {
+            font-size: 1.125rem;
+            color: var(--gray-light);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .btn-primary {
+            background: var(--accent);
+            color: var(--primary);
+        }
+        
         .btn-primary:hover {
             background: #1d4ed8;
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border-color: var(--accent);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 3rem 0;
+            border-top: 1px solid #334155;
+        }
+        
+        .footer-content {
+            text-align: center;
+        }
+        
+        .footer p {
+            color: var(--gray-light);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .metrics {
+                grid-template-columns: 1fr;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .status-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Hero Section -->
-    <div class="hero">
+    <!-- Header -->
+    <header class="header">
         <div class="container">
-            <h1>Emier Blockchain</h1>
-            <p>Enterprise-Grade Blockchain dengan Neural Consensus & Global Sharding Architecture</p>
+            <nav class="nav">
+                <a href="#" class="logo">Emier Blockchain</a>
+                <ul class="nav-links">
+                    <li><a href="#features">Technology</a></li>
+                    <li><a href="#status">Status</a></li>
+                    <li><a href="https://github.com/seekoneid-emier/emier-blockchain">GitHub</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Enterprise Blockchain Platform</h1>
+            <p>Next-generation blockchain technology with Neural Consensus and Global Sharding architecture for enterprise-scale applications</p>
             
             <div class="metrics">
                 <div class="metric-card">
@@ -140,79 +357,91 @@
                 </div>
                 <div class="metric-card">
                     <div class="metric-value">500K+</div>
-                    <div class="metric-label">Scalable TPS</div>
+                    <div class="metric-label">Scalable Capacity</div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Features Section -->
-    <div class="container">
-        <div class="features">
-            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: var(--dark);">
-                Next-Generation Blockchain Technology
-            </h2>
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Advanced Blockchain Technology</h2>
             
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="status-badge">PRODUCTION READY</div>
-                    <h3>🤖 Neural Consensus Engine</h3>
-                    <p>AI-powered consensus algorithm achieving 128,500 TPS with 1.1 second finality. Features adaptive mode switching and real-time network optimization.</p>
+                    <div class="feature-icon">AI</div>
+                    <h3>Neural Consensus Engine</h3>
+                    <p>Artificial intelligence-powered consensus algorithm achieving unprecedented performance with 128,500 TPS and 1.1 second finality time. Adaptive optimization and real-time network intelligence.</p>
                 </div>
                 
                 <div class="feature-card">
-                    <div class="status-badge">SCALABLE ARCHITECTURE</div>
-                    <h3>🌐 Global Sharding Network</h3>
-                    <p>64-shard architecture with seamless cross-shard communication. Atomic transactions and horizontal scalability for enterprise workloads.</p>
+                    <div class="feature-icon">SH</div>
+                    <h3>Global Sharding Architecture</h3>
+                    <p>64-shard distributed network architecture with seamless cross-shard communication. Atomic transactions and horizontal scalability designed for enterprise-grade workloads and global deployment.</p>
                 </div>
                 
                 <div class="feature-card">
-                    <div class="status-badge">ENTERPRISE GRADE</div>
-                    <h3>🏢 Production Deployment</h3>
-                    <p>Complete enterprise toolkit with monitoring, SDKs, APIs, and security features. Ready for mainnet deployment and validator onboarding.</p>
+                    <div class="feature-icon">EP</div>
+                    <h3>Enterprise Production Ready</h3>
+                    <p>Complete enterprise blockchain solution with comprehensive tooling, advanced monitoring systems, robust security features, and production deployment capabilities for mission-critical applications.</p>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- System Status -->
-        <div class="feature-card" style="text-align: center; margin: 3rem 0;">
-            <h3>🚀 Live System Status</h3>
-            <div style="display: inline-grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin: 2rem 0;">
-                <div>
-                    <div style="font-size: 1.5rem; font-weight: 600; color: var(--success);">🟢 ONLINE</div>
-                    <div>Validator Network</div>
+    <!-- Status Section -->
+    <section class="status" id="status">
+        <div class="container">
+            <h2 class="section-title">System Status</h2>
+            
+            <div class="status-grid">
+                <div class="status-item">
+                    <div class="status-value">OPERATIONAL</div>
+                    <div class="status-label">Validator Network</div>
                 </div>
-                <div>
-                    <div style="font-size: 1.5rem; font-weight: 600; color: var(--success);">🟢 ACTIVE</div>
-                    <div>Enterprise APIs</div>
+                <div class="status-item">
+                    <div class="status-value">ACTIVE</div>
+                    <div class="status-label">Enterprise APIs</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-value">READY</div>
+                    <div class="status-label">Developer Tools</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-value">STABLE</div>
+                    <div class="status-label">Production Environment</div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- CTA Section -->
-        <div class="cta-section">
-            <h2 style="font-size: 2rem; margin-bottom: 1rem; color: var(--dark);">Ready to Build the Future?</h2>
-            <p style="color: #64748b; margin-bottom: 2rem; font-size: 1.1rem;">
-                Join the Emier Blockchain ecosystem. Deploy validators, build dApps, or integrate enterprise solutions.
-            </p>
-            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                <a href="https://github.com/seekoneid-emier/emier-blockchain" class="btn-primary">
-                    🚀 Get Started on GitHub
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Build the Future?</h2>
+            <p>Join the Emier Blockchain ecosystem. Deploy enterprise validators, build scalable applications, or integrate with existing systems.</p>
+            
+            <div class="btn-group">
+                <a href="https://github.com/seekoneid-emier/emier-blockchain" class="btn btn-primary">
+                    Get Started on GitHub
                 </a>
-                <a href="https://github.com/seekoneid-emier/emier-blockchain/tree/main/docs/recruitment" 
-                   class="btn-primary" style="background: var(--success);">
-                    👥 Become a Validator
+                <a href="https://github.com/seekoneid-emier/emier-blockchain/tree/main/docs/recruitment" class="btn btn-secondary">
+                    Become a Validator
                 </a>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Footer -->
-    <div style="text-align: center; padding: 3rem 0; color: #64748b; border-top: 1px solid #e2e8f0;">
+    <footer class="footer">
         <div class="container">
-            <p>Emier Blockchain &copy; 2024 - Neural Consensus & Global Sharding Technology</p>
-            <p>Production Ready • Enterprise Grade • Open Source</p>
+            <div class="footer-content">
+                <p>Emier Blockchain Technology &copy; 2025</p>
+                <p>Neural Consensus Engine & Global Sharding Architecture</p>
+                <p>Production Ready • Enterprise Grade • Open Source Technology</p>
+            </div>
         </div>
-    </div>
+    </footer>
 </body>
 </html>
